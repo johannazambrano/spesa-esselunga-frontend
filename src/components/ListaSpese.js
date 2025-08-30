@@ -17,7 +17,16 @@ function ListaSpese() {
             <h2>Lista delle Spese</h2>
             <ul>
                 {spese.map(spesa => (
-                    <li key={spesa.id}>{spesa.stato} - {spesa.dataCreazione}</li>
+                    <li key={spesa.id}>
+                        {spesa.stato} - {spesa.dataCreazione}
+                        {spesa.articoli && spesa.articoli.length > 0 && (
+                            <ul>
+                                {spesa.articoli.map((articolo, idx) => (
+                                    <li key={idx}>{articolo}</li>
+                                ))}
+                            </ul>
+                        )}
+                    </li>
                 ))}
             </ul>
         </div>
