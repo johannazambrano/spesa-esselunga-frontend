@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import ListaSpese from './components/ListaSpese';
+import CreaSpesa from './components/CreaSpesa';
+import ModificaSpesa from './components/ModificaSpesa';
+import MappaPercorso from './components/MappaPercorso';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav>
+        <ul>
+          <li><Link to="/spese">Lista Spese</Link></li>
+          <li><Link to="/crea">Crea Nuova Spesa</Link></li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/spese" element={<ListaSpese />} />
+        <Route path="/crea" element={<CreaSpesa />} />
+        <Route path="/modifica/:id" element={<ModificaSpesa />} />
+        <Route path="/percorso" element={<MappaPercorso />} />
+      </Routes>
+    </Router>
   );
 }
 
